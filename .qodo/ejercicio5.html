@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocidad del automovil</title>
+    <p>1 km/h = 0.27778 m/s</p>
+    <p>Para convertir de km/h a m/s, multiplica la velocidad en km/h por 0.27778.</p>
+    <input type="number" id="velocidadKmH" >
+    <button onclick="convertirVelocidad()">Convertir a m/s</button>
+</head>
+<body>
+    <script>
+        let velocidadKmH = document.getElementById("velocidadKmH");
+        function convertirVelocidad() {
+            let velocidadMS = velocidadKmH.value * 0.27778;
+            alert(`La velocidad en metros por segundo es: ${velocidadMS} m/s`);
+        }
+
+    </script>
+</body>
+</html> 

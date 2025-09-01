@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+<body>
+    <h2>Nómina de Obreros Calificados</h2>
+    <button onclick="calcularNomina()">Calcular Nómina</button>
+    <div id="resultados"></div>
+    <script>
+    function calcularNomina() {
+        const NUM_OBREROS = 50;
+        const PAGO_POR_HORA = 10000;
+        let resultados = '';
+        for (let i = 1; i <= NUM_OBREROS; i++) {
+            let horas = prompt(`Ingrese las horas trabajadas por el obrero ${i}:`);
+            horas = Number(horas);
+            if (isNaN(horas) || horas < 0) {
+                alert('Por favor ingrese un número válido de horas.');
+                i--;
+                continue;
+            }
+            let sueldo = horas * PAGO_POR_HORA;
+            resultados += `Obrero ${i}: ${horas} horas, Sueldo: ${sueldo} pesos<br>`;
+        }
+        document.getElementById('resultados').innerHTML = resultados;
+    }
+    </script>
+</body>
+</html>
