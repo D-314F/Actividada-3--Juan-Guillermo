@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Ejercicio 9 panaderia</title>
+</head>
+<body>
+    <h1>Ejercicio 9 - Panadería</h1>
+  <p>la panadería vende su mejor pan a 12.500 cada uno. El pan que no es del día tiene un descuento del 60%.</p>
+
+  <form id="formPanaderia">
+    <label>
+      Número de barras que <strong>NO</strong> son del día:
+      <input type="number" id="barras" min="0" required>
+    </label>
+    <br><br>
+
+    <button type="submit">Calcular</button>
+  </form>
+
+  <h2 id="resultado"></h2>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("formPanaderia");
+      const salida = document.getElementById("resultado");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const precioNormal = 12500;
+        const descuento = 0.60;
+        const precioConDescuento = precioNormal * (1 - descuento);
+
+        const barras = parseInt(document.getElementById("barras").value, 10);
+
+        if (!Number.isInteger(barras) || barras < 0) {
+          salida.textContent = "Por favor ingresa un número válido de barras.";
+          return;
+        }
+
+        const costeTotal = barras * precioConDescuento;
+
+        salida.innerHTML = `
+          <p>Precio habitual de una barra: <strong>${precioNormal}</strong></p>
+          <p>Descuento aplicado: <strong>${descuento * 100}%</strong></p>
+          <p>Precio por barra no fresca: <strong>${precioConDescuento}</strong></p>
+          <p>Número de barras no frescas: <strong>${barras}</strong></p>
+          <p><u>Coste final total</u>: <strong>${costeTotal}</strong></p>
+        `;
+      });
+    });
+  </script>
+    
+</body>
+</html>

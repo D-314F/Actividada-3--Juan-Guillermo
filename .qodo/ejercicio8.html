@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugueteria</title>
+</head>
+<body>
+    <p> payaso pesa 112 g <br> y cada muñeca 75 g.</p>
+    <input type="number" id="payasos" >
+    <input type="number" id="muñecas" >
+    <button onclick="calcularPeso()">Calcular peso total</button>
+    <script>
+        let payasos = document.getElementById("payasos");
+        let muñecas = document.getElementById("muñecas");
+        function calcularPeso () { 
+            let pesoTotal = (payasos.value * 112) + (muñecas.value * 75);
+            alert("El peso total del paquete es: " + pesoTotal + "g "); 
+        }
+    </script> 
+</body>
+</html>

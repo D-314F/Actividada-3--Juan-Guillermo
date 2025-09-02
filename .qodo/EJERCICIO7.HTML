@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7 - Capital de Inversion</title>
+</head>
+<body>
+    <h1>Ejercicio 7</h1>
+  <p>Pide cantidad a invertir, interés anual y número de años; muestra el capital obtenido (interés simple).</p>
+
+  <form id="formInversion">
+    <label>
+      Cantidad a invertir:
+      <input type="number" id="capital" step="0.01" required>
+    </label>
+    <br><br>
+
+    <label>
+      Interés anual (%):
+      <input type="number" id="interes" step="0.01" required>
+    </label>
+    <br><br>
+
+    <label>
+      Número de años:
+      <input type="number" id="anios" required>
+    </label>
+    <br><br>
+
+    <button type="submit">Calcular</button>
+  </form>
+
+  <h2 id="resultado"></h2>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('formInversion');
+      const salida = document.getElementById('resultado');
+
+      
+      if (!form) {
+        console.error('No se encontró el formulario (id="formInversion"). Revisa el HTML.');
+        return;
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault(); 
+
+        const capital = parseFloat(document.getElementById('capital').value);
+        const interes  = parseFloat(document.getElementById('interes').value);
+        const anios    = parseInt(document.getElementById('anios').value, 10);
+
+        if (!isFinite(capital) || !isFinite(interes) || !Number.isInteger(anios) ||
+            capital < 0 || interes < 0 || anios <= 0) {
+          salida.textContent = 'Ingresa valores válidos: números positivos y años mayor que 0.';
+          return;
+        }
+
+    
+        const capitalFinal = capital * (1 + (interes / 100) * anios);
+
+        salida.textContent = `El capital obtenido después de ${anios} años es: ${capitalFinal.toFixed(2)}`;
+      });
+    });
+    </script>
+    
+</body>
+</html>
